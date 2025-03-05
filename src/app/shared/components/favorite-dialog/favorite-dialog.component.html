@@ -1,0 +1,18 @@
+<!-- src/app/shared/components/favorite-dialog/favorite-dialog.component.html -->
+<h2 mat-dialog-title>Pokemon Favorito</h2>
+
+<mat-dialog-content>
+    <div *ngIf="data?.pokemon">
+        <h3>{{ data.pokemon.name | uppercase }}</h3>
+        <img [src]="data.pokemon.sprites?.front_default" alt="{{ data.pokemon.name }}" />
+        <ul>
+            <li><strong>ID:</strong> {{ data.pokemon.id }}</li>
+            <li><strong>Altura:</strong> {{ data.pokemon.height }}</li>
+            <li><strong>Peso:</strong> {{ data.pokemon.weight }}</li>
+        </ul>
+    </div>
+</mat-dialog-content>
+
+<mat-dialog-actions>
+    <button mat-button (click)="closeDialog()">Cerrar</button>
+</mat-dialog-actions>

@@ -1,0 +1,11 @@
+<header style="background: #fafafa; padding: 1rem;">
+    <h1 style="margin:0;">Mi App de Pokemons</h1>
+    <div style="margin-top: 0.5rem;">
+        <a routerLink="/pokemons">Pokemons</a>
+        <a routerLink="/favorites" style="margin-left: 1rem;">Favoritos</a>
+    </div>
+    <div *ngIf="favoritePokemon$ | async as favoritePokemon" style="cursor: pointer; margin-top: 0.5rem;"
+        (click)="showFavoriteDetail(favoritePokemon)">
+        <strong>Favorito:</strong> {{ favoritePokemon.name }}
+    </div>
+</header>

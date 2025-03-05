@@ -1,0 +1,17 @@
+<div>
+    <h3>Resumen por Letra Inicial</h3>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Letra</th>
+                <th>Cantidad</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let letter of getLetters()">
+                <td>{{ letter }}</td>
+                <td>{{ letterCount[letter] }}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

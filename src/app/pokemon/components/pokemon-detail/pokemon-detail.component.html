@@ -1,0 +1,12 @@
+<div *ngIf="pokemonDetail">
+    <h3>Detalle de {{ pokemonDetail.name | uppercase }}</h3>
+    <img [src]="pokemonDetail.sprites?.front_default" alt="{{ pokemonDetail.name }}" />
+
+    <ul>
+        <li><strong>ID:</strong> {{ pokemonDetail.id }}</li>
+        <li><strong>Altura:</strong> {{ pokemonDetail.height }}</li>
+        <li><strong>Peso:</strong> {{ pokemonDetail.weight }}</li>
+    </ul>
+
+    <button (click)="setAsFavorite()">Marcar como favorito</button>
+</div>

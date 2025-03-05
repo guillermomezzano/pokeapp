@@ -1,0 +1,29 @@
+<div>
+    <h2>Listado de Pokemons</h2>
+
+    <!-- Filtro -->
+    <input type="text" [(ngModel)]="searchTerm" placeholder="Filtrar por nombre" (input)="applyFilter()" />
+
+    <!-- Tabla con la lista de pokemons filtrados -->
+    <table border="1" style="margin-top: 1rem;">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let pokemon of filteredPokemons" style="cursor: pointer;" (click)="selectPokemon(pokemon.name)">
+                <td>{{ pokemon.name }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <!-- Botones de paginación -->
+    <div style="margin-top: 1rem;">
+        <button (click)="prevPage()">Anterior</button>
+        <button (click)="nextPage()">Siguiente</button>
+        <span style="margin-left:1rem;">
+            (Mostrando {{ offset + 1 }} - {{ offset + limit }} de {{ totalPokemons }})
+        </span>
+    </div>
+</div>
