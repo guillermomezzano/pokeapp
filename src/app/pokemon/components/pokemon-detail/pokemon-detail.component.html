@@ -1,12 +1,23 @@
-<div *ngIf="pokemonDetail">
-    <h3>Detalle de {{ pokemonDetail.name | uppercase }}</h3>
-    <img [src]="pokemonDetail.sprites?.front_default" alt="{{ pokemonDetail.name }}" />
+<div *ngIf="pokemonDetail" class="p-6 bg-gray-100 rounded-md shadow-md flex flex-col items-center ">
+    <!-- Título -->
+    <h3 class="text-2xl font-bold mb-4">
+        Detalle de {{ pokemonDetail.name | uppercase }}
+    </h3>
 
-    <ul>
+    <!-- Imagen -->
+    <img [src]="pokemonDetail.sprites?.front_default" alt="{{ pokemonDetail.name }}"
+        class="mb-4 w-32 h-32 object-contain" />
+
+    <!-- Lista de detalles -->
+    <ul class="mb-4 space-y-2">
         <li><strong>ID:</strong> {{ pokemonDetail.id }}</li>
         <li><strong>Altura:</strong> {{ pokemonDetail.height }}</li>
         <li><strong>Peso:</strong> {{ pokemonDetail.weight }}</li>
     </ul>
 
-    <button (click)="setAsFavorite()">Marcar como favorito</button>
+    <!-- Botón de acción -->
+    <button (click)="setAsFavorite()"
+        class="bg-red-500 text-white font-semibold py-2 px-4 rounded-md shadow hover:bg-red-600 focus:outline-none transition-colors cursor-pointer">
+        Marcar como favorito
+    </button>
 </div>

@@ -1,28 +1,39 @@
-<div>
-    <h2>Listado de Pokemons</h2>
+<div class="p-6">
+    <!-- Título -->
+    <h2 class="text-2xl font-semibold mb-4">Listado de Pokemons</h2>
 
     <!-- Filtro -->
-    <input type="text" [(ngModel)]="searchTerm" placeholder="Filtrar por nombre" (input)="applyFilter()" />
+    <input type="text" [(ngModel)]="searchTerm" placeholder="Filtrar por nombre" (input)="applyFilter()"
+        class="border border-gray-300 rounded-md py-2 px-3 w-64 focus:outline-none focus:border-red-500" />
 
     <!-- Tabla con la lista de pokemons filtrados -->
-    <table border="1" style="margin-top: 1rem;">
+    <table class="w-full mt-4 border-collapse overflow-hidden rounded-lg shadow">
         <thead>
-            <tr>
-                <th>Nombre</th>
+            <tr class="bg-red-500 text-white">
+                <th class="px-4 py-2 text-left">Nombre</th>
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let pokemon of filteredPokemons" style="cursor: pointer;" (click)="selectPokemon(pokemon.name)">
-                <td>{{ pokemon.name }}</td>
+            <tr *ngFor="let pokemon of filteredPokemons" class="cursor-pointer hover:bg-gray-100"
+                (click)="selectPokemon(pokemon.name)">
+                <td class="border border-gray-200 px-4 py-2">
+                    {{ pokemon.name }}
+                </td>
             </tr>
         </tbody>
     </table>
 
     <!-- Botones de paginación -->
-    <div style="margin-top: 1rem;">
-        <button (click)="prevPage()">Anterior</button>
-        <button (click)="nextPage()">Siguiente</button>
-        <span style="margin-left:1rem;">
+    <div class="mt-4 flex items-center">
+        <button (click)="prevPage()"
+            class="bg-red-500 text-white font-semibold py-2 px-4 rounded-md shadow hover:bg-red-600 focus:outline-none transition-colors cursor-pointer">
+            Anterior
+        </button>
+        <button (click)="nextPage()"
+            class="ml-2 bg-red-500 text-white font-semibold py-2 px-4 rounded-md shadow hover:bg-red-600 focus:outline-none transition-colors cursor-pointer">
+            Siguiente
+        </button>
+        <span class="ml-4">
             (Mostrando {{ offset + 1 }} - {{ offset + limit }} de {{ totalPokemons }})
         </span>
     </div>

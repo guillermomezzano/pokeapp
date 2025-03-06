@@ -1,17 +1,34 @@
-<div>
-    <h3>Resumen por Letra Inicial</h3>
-    <table border="1">
-        <thead>
-            <tr>
-                <th>Letra</th>
-                <th>Cantidad</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor="let letter of getLetters()">
-                <td>{{ letter }}</td>
-                <td>{{ letterCount[letter] }}</td>
-            </tr>
-        </tbody>
+<div class="p-6 max-w-3xl bg-gray-100 rounded shadow bg-primary">
+    <!-- Título con color de tu tema principal -->
+    <h3 class="text-2xl font-bold mb-4 text-primary">
+        Resumen por Letra Inicial
+    </h3>
+
+    <!-- Tabla de Angular Material -->
+    <table mat-table [dataSource]="dataSource">
+
+        <!-- Columna: Letra -->
+        <ng-container matColumnDef="letter">
+            <th mat-header-cell *matHeaderCellDef>
+                Letra
+            </th>
+            <td mat-cell *matCellDef="let element">
+                {{ element.letter }}
+            </td>
+        </ng-container>
+
+        <!-- Columna: Cantidad -->
+        <ng-container matColumnDef="count">
+            <th mat-header-cell *matHeaderCellDef>
+                Cantidad
+            </th>
+            <td mat-cell *matCellDef="let element">
+                {{ element.count }}
+            </td>
+        </ng-container>
+
+        <!-- Header y Rows -->
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
     </table>
 </div>

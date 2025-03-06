@@ -1,16 +1,26 @@
 // src/app/pokemon/components/pokemon-summary/pokemon-summary.component.ts
 import { Component, OnInit } from '@angular/core';
-import { PokemonService } from '../../services/pokemon.service';
 import { CommonModule } from '@angular/common';
+
+//interface
+import { SummaryData } from './interface';
+
+//services
+import { PokemonService } from '../../services/pokemon.service';
+
+//mui
+import { MatTableModule } from '@angular/material/table';
 
 @Component({
   selector: 'app-pokemon-summary',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, MatTableModule],
   templateUrl: './pokemon-summary.component.html',
 })
 export class PokemonSummaryComponent implements OnInit {
   letterCount: { [key: string]: number } = {};
+  dataSource: SummaryData[] = [];
+  displayedColumns: string[] = ['letter', 'count'];
 
   constructor(private pokemonService: PokemonService) {}
 
@@ -30,10 +40,17 @@ export class PokemonSummaryComponent implements OnInit {
           this.letterCount[firstLetter]++;
         }
       });
+
+      this.dataSource = Object.keys(this.letterCount)
+        .sort()
+        .map((letter) => ({
+          letter,
+          count: this.letterCount[letter],
+        }));
     });
   }
 
-  getLetters(): string[] {
-    return Object.keys(this.letterCount).sort();
-  }
+  // getLetters(): string[] {
+  //   return Object.keys(this.letterCount).sort();
+  // }
 }
