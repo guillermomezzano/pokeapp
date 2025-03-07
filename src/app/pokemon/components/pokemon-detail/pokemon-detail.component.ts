@@ -1,7 +1,8 @@
 // src/app/pokemon/components/pokemon-detail/pokemon-detail.component.ts
 import { Component, Input, OnChanges } from '@angular/core';
-import { PokemonService } from '../../services/pokemon.service';
+import { PokemonService } from '../../../services/pokemon.service';
 import { CommonModule } from '@angular/common';
+import { PokemonDetail } from './interface';
 
 @Component({
   selector: 'app-pokemon-detail',
@@ -10,8 +11,8 @@ import { CommonModule } from '@angular/common';
   templateUrl: './pokemon-detail.component.html',
 })
 export class PokemonDetailComponent implements OnChanges {
-  @Input() pokemonName = '';
-  pokemonDetail: any;
+  @Input() pokemonName: string = '';
+  pokemonDetail: PokemonDetail | null = null;
 
   constructor(private pokemonService: PokemonService) {}
 

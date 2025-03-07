@@ -1,6 +1,6 @@
 import { FavoriteDialogComponent } from '../../../shared/components/favorite-dialog/favorite-dialog.component';
 import { Component } from '@angular/core';
-import { PokemonService } from '../../../pokemon/services/pokemon.service';
+import { PokemonService } from '../../../services/pokemon.service';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { CommonModule } from '@angular/common';
 import { Observable } from 'rxjs';

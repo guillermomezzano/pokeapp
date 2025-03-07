@@ -6,10 +6,14 @@ import {
   OnInit,
   OnDestroy,
 } from '@angular/core';
-import { PokemonService } from '../../services/pokemon.service';
+import { PokemonService } from '../../../services/pokemon.service';
 import { Subscription } from 'rxjs';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+
+//interface
+import { PokemonListResponse } from '../../../interface/pokemon-response.interface';
+import { Pokemon } from '../../../interface/pokemon.interface';
 
 @Component({
   selector: 'app-pokemon-list',
@@ -20,8 +24,8 @@ import { FormsModule } from '@angular/forms';
 export class PokemonListComponent implements OnInit, OnDestroy {
   @Output() pokemonSelected = new EventEmitter<string>();
 
-  pokemons: any[] = [];
-  filteredPokemons: any[] = [];
+  pokemons: Pokemon[] = [];
+  filteredPokemons: Pokemon[] = [];
 
   limit = 20;
   offset = 0;
@@ -39,7 +43,7 @@ export class PokemonListComponent implements OnInit, OnDestroy {
   loadPokemons(): void {
     const sub = this.pokemonService
       .getPokemons(this.limit, this.offset)
-      .subscribe((response) => {
+      .subscribe((response: PokemonListResponse) => {
         this.pokemons = response.results;
         this.totalPokemons = response.count;
         this.applyFilter();

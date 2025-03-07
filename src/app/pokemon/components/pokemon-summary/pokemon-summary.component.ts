@@ -4,9 +4,10 @@ import { CommonModule } from '@angular/common';
 
 //interface
 import { SummaryData } from './interface';
+import { PokemonListResponse } from '../../../interface/pokemon-response.interface';
 
 //services
-import { PokemonService } from '../../services/pokemon.service';
+import { PokemonService } from '../../../services/pokemon.service';
 
 //mui
 import { MatTableModule } from '@angular/material/table';
@@ -25,29 +26,31 @@ export class PokemonSummaryComponent implements OnInit {
   constructor(private pokemonService: PokemonService) {}
 
   ngOnInit(): void {
-    this.pokemonService.getAllPokemons().subscribe((response) => {
-      const allPokemons = response.results;
+    this.pokemonService
+      .getAllPokemons()
+      .subscribe((response: PokemonListResponse) => {
+        const allPokemons = response.results;
 
-      // Inicializamos las letras A-Z
-      for (let i = 65; i <= 90; i++) {
-        this.letterCount[String.fromCharCode(i)] = 0;
-      }
-
-      // Contamos cuántos pokemons empiezan con cada letra
-      allPokemons.forEach((p: any) => {
-        const firstLetter = p.name.charAt(0).toUpperCase();
-        if (this.letterCount[firstLetter] !== undefined) {
-          this.letterCount[firstLetter]++;
+        // Inicializamos las letras A-Z
+        for (let i = 65; i <= 90; i++) {
+          this.letterCount[String.fromCharCode(i)] = 0;
         }
-      });
 
-      this.dataSource = Object.keys(this.letterCount)
-        .sort()
-        .map((letter) => ({
-          letter,
-          count: this.letterCount[letter],
-        }));
-    });
+        // Contamos cuántos pokemons empiezan con cada letra
+        allPokemons.forEach((p: any) => {
+          const firstLetter = p.name.charAt(0).toUpperCase();
+          if (this.letterCount[firstLetter] !== undefined) {
+            this.letterCount[firstLetter]++;
+          }
+        });
+
+        this.dataSource = Object.keys(this.letterCount)
+          .sort()
+          .map((letter) => ({
+            letter,
+            count: this.letterCount[letter],
+          }));
+      });
   }
 
   // getLetters(): string[] {
