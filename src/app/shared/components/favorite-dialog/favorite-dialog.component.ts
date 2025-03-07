@@ -1,21 +1,18 @@
 import { Component, Inject } from '@angular/core';
+import { CommonModule } from '@angular/common';
+
+//mui
+import { MatButtonModule } from '@angular/material/button';
 import {
   MAT_DIALOG_DATA,
   MatDialogModule,
   MatDialogRef,
 } from '@angular/material/dialog';
-import { CommonModule } from '@angular/common';
-// Importa este si usas <button mat-button>
-import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'app-favorite-dialog',
   standalone: true,
-  imports: [
-    CommonModule,
-    MatDialogModule,
-    MatButtonModule, // <-- para usar el mat-button
-  ],
+  imports: [CommonModule, MatDialogModule, MatButtonModule],
   templateUrl: './favorite-dialog.component.html',
 })
 export class FavoriteDialogComponent {

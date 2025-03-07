@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 //interface
-import { SummaryData } from './interface';
+import { SummaryData } from '../../../interface/pokemon-sumary-data.interface';
 import { PokemonListResponse } from '../../../interface/pokemon-response.interface';
 
 //services
@@ -52,8 +52,4 @@ export class PokemonSummaryComponent implements OnInit {
           }));
       });
   }
-
-  // getLetters(): string[] {
-  //   return Object.keys(this.letterCount).sort();
-  // }
 }

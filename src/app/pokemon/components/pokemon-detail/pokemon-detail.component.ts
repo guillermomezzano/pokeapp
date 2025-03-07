@@ -1,8 +1,11 @@
-// src/app/pokemon/components/pokemon-detail/pokemon-detail.component.ts
 import { Component, Input, OnChanges } from '@angular/core';
-import { PokemonService } from '../../../services/pokemon.service';
 import { CommonModule } from '@angular/common';
-import { PokemonDetail } from './interface';
+
+//services
+import { PokemonService } from '../../../services/pokemon.service';
+
+//interface
+import { PokemonDetail } from '../../../interface/pokemon-detail.interface';
 
 @Component({
   selector: 'app-pokemon-detail',
@@ -17,7 +20,6 @@ export class PokemonDetailComponent implements OnChanges {
   constructor(private pokemonService: PokemonService) {}
 
   ngOnChanges(): void {
-    // Cada vez que cambie pokemonName, cargamos detalle
     if (this.pokemonName) {
       this.loadDetail();
     }

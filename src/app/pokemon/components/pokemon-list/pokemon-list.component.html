@@ -1,12 +1,9 @@
 <div class="p-6">
-    <!-- Título -->
     <h2 class="text-2xl font-semibold mb-4">Listado de Pokemons</h2>
 
-    <!-- Filtro -->
     <input type="text" [(ngModel)]="searchTerm" placeholder="Filtrar por nombre" (input)="applyFilter()"
         class="border border-gray-300 rounded-md py-2 px-3 w-64 focus:outline-none focus:border-red-500" />
 
-    <!-- Tabla con la lista de pokemons filtrados -->
     <table class="w-full mt-4 border-collapse overflow-hidden rounded-lg shadow">
         <thead>
             <tr class="bg-red-500 text-white">

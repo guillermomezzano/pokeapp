@@ -1,9 +1,15 @@
-import { FavoriteDialogComponent } from '../../../shared/components/favorite-dialog/favorite-dialog.component';
-import { Component } from '@angular/core';
-import { PokemonService } from '../../../services/pokemon.service';
-import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { CommonModule } from '@angular/common';
 import { Observable } from 'rxjs';
+import { Component } from '@angular/core';
+
+//components
+import { FavoriteDialogComponent } from '../../../shared/components/favorite-dialog/favorite-dialog.component';
+
+//services
+import { PokemonService } from '../../../services/pokemon.service';
+
+//mui
+import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-header',
@@ -12,14 +18,12 @@ import { Observable } from 'rxjs';
   templateUrl: './header.component.html',
 })
 export class HeaderComponent {
-  // En vez de un valor fijo, exponemos el Observable
   favoritePokemon$: Observable<any>;
 
   constructor(
     private pokemonService: PokemonService,
     private dialog: MatDialog
   ) {
-    // Asignamos el Observable directamente
     this.favoritePokemon$ = this.pokemonService.favoritePokemon$;
   }
 

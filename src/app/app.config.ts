@@ -10,11 +10,8 @@ import { routes } from './app.routes';
 
 export const appConfig: ApplicationConfig = {
   providers: [
-    // Configuración para optimizar la detección de cambios en Angular
     provideZoneChangeDetection({ eventCoalescing: true }),
-    // Proveedor de Router
     provideRouter(routes),
-    // Proveedor de HttpClient (reemplaza al antiguo HttpClientModule)
     provideHttpClient(),
     importProvidersFrom(BrowserAnimationsModule),
   ],

@@ -1,4 +1,3 @@
-// src/app/pokemon/components/pokemon-list/pokemon-list.component.ts
 import {
   Component,
   Output,
@@ -6,8 +5,13 @@ import {
   OnInit,
   OnDestroy,
 } from '@angular/core';
-import { PokemonService } from '../../../services/pokemon.service';
+
 import { Subscription } from 'rxjs';
+
+//services
+import { PokemonService } from '../../../services/pokemon.service';
+
+//mui
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 

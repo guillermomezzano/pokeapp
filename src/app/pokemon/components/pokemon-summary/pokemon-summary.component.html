@@ -1,13 +1,11 @@
 <div class="p-6 bg-gray-100 rounded shadow bg-primary">
-    <!-- Título con color de tu tema principal -->
+
     <h3 class="text-2xl font-bold mb-4 text-primary">
         Resumen por Letra Inicial
     </h3>
 
-    <!-- Tabla de Angular Material -->
     <table mat-table [dataSource]="dataSource">
 
-        <!-- Columna: Letra -->
         <ng-container matColumnDef="letter">
             <th mat-header-cell *matHeaderCellDef>
                 Letra
@@ -17,7 +15,6 @@
             </td>
         </ng-container>
 
-        <!-- Columna: Cantidad -->
         <ng-container matColumnDef="count">
             <th mat-header-cell *matHeaderCellDef>
                 Cantidad
@@ -27,7 +24,6 @@
             </td>
         </ng-container>
 
-        <!-- Header y Rows -->
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
         <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
     </table>
